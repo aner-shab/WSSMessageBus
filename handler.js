@@ -160,7 +160,8 @@ const validateSubscription = (socket) => {
 }
 
 const validateExpiration = (socket) => {
-    const isExpired = false; // Redacted.
+    const now = new Date();
+    const isExpired = now > tickets[client.ticket].expiration;
     if (!isExpired){
         tickets[client.ticket].expiration = extendTicketExpiration();
         return true;
